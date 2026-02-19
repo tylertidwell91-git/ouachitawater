@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pay Your Bill | Ouachita Spring Water Co.</title>
+    <meta
+      name="description"
+      content="Securely pay your Ouachita Spring Water Co. bill online using Stripe."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="page-inner">
+        <header class="nav">
+          <a href="index.html" class="brand" aria-label="Ouachita Spring Water Co. – Home">
+            <div class="brand-mark"></div>
+            <div>
+              <div class="brand-text-main">Ouachita Spring Water</div>
+              <div class="brand-text-sub">Natural Spring Water Delivery</div>
+            </div>
+          </a>
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html" class="nav-link">About</a>
+            <a href="bill-pay.html" class="nav-link nav-link--primary">Pay Your Bill</a>
+          </nav>
+        </header>
+
+        <section class="layout-main" aria-labelledby="bill-pay-heading">
+          <article class="card">
+            <div class="card-header-eyebrow">Bill pay</div>
+            <h1 id="bill-pay-heading" class="card-title">Pay your water bill online.</h1>
+            <div class="badge-soft" aria-hidden="true">
+              <span class="badge-dot"></span>
+              <span>Submission sent to OSWater@ipa.net • Receipt emailed to you</span>
+            </div>
+
+            <form id="bill-pay-form" class="form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-label" for="customerName">Customer name</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="customerName"
+                    name="customerName"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="receiptEmail">Email for receipt</label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="receiptEmail"
+                    name="receiptEmail"
+                    autocomplete="email"
+                    required
+                  />
+                  <div class="form-help">We’ll send a payment receipt to this address.</div>
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="street">Street address</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="street"
+                  name="street"
+                  autocomplete="street-address"
+                  required
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-label" for="city">City</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="city"
+                    name="city"
+                    autocomplete="address-level2"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="state">State</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="state"
+                    name="state"
+                    autocomplete="address-level1"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="zip">ZIP code</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="zip"
+                    name="zip"
+                    autocomplete="postal-code"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-label" for="amount">Payment amount (USD)</label>
+                  <input
+                    class="form-input"
+                    type="number"
+                    id="amount"
+                    name="amount"
+                    min="0.50"
+                    step="0.01"
+                    required
+                  />
+                  <div class="form-help">Enter the total shown on your invoice.</div>
+                </div>
+              </div>
+
+              <div class="form-field" id="card-field-wrap">
+                <label class="form-label">Card details</label>
+                <div id="card-element" class="stripe-card-element"></div>
+                <div id="card-errors" class="form-help stripe-card-errors" role="alert"></div>
+                <div class="form-help">Your name and address above are used as the billing details for this card. Payment is required; your card is charged when you submit.</div>
+              </div>
+
+              <button type="submit" class="btn-primary" id="submit-btn">
+                Submit payment
+                <span aria-hidden="true">↗</span>
+              </button>
+
+              <p class="status-note" id="bill-pay-status" aria-live="polite"></p>
+            </form>
+          </article>
+
+          <aside class="card aside-card" aria-label="Support & contact">
+            <div class="aside-inner">
+              <div class="aside-kpi">
+                <div>
+                  <div class="kpi-main">Need help with a bill?</div>
+                  <p class="card-subtitle">
+                    If something doesn’t look right on your invoice, or you’d like help setting up
+                    recurring payments, our team is happy to assist.
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-grid">
+                <div>
+                  <div class="contact-label">Billing support</div>
+                  <div class="contact-value">
+                    <a href="tel:+18703564795">(870) 356-4795</a>
+                  </div>
+                </div>
+                <div>
+                  <div class="contact-label">Billing email</div>
+                  <div class="contact-value">
+                    <a href="mailto:OSWater@ipa.net">OSWater@ipa.net</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Ouachita Spring Water Co. All rights reserved.</div>
+        <div>
+          <a href="index.html">Back to about</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/billpay.js" defer></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+
