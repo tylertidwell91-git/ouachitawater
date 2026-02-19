@@ -43,16 +43,16 @@ body {
   position: relative;
 }
 
-/* Subtle Ouachita forest/spring imagery – light overlay */
+/* Subtle Ouachita forest/spring imagery – stream/waterfall overlay */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1560769684-4fa2e315997e?w=1600&q=80");
+  background-image: url("https://images.unsplash.com/photo-1515942140440-bc864ffd5992?w=1600&q=85");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  opacity: 0.12;
+  opacity: 0.28;
   pointer-events: none;
   z-index: 0;
 }
@@ -61,12 +61,12 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
-    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
+  background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.45) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
   background-size: 48px 48px, 64px 64px, 56px 56px;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.4;
   z-index: 0;
 }
 
