@@ -170,6 +170,59 @@ app.post("/api/submit-bill", async (req, res) => {
   }
 });
 
+// New customer form: email to OSWater@ipa.net
+app.post("/api/submit-new-customer", async (req, res) => {
+  const { name, email, phone, street, city, state, zip, company, notes } = req.body || {};
+
+  if (!name || !email) {
+    return res.status(400).json({
+      success: false,
+      message: "Name and email are required.",
+    });
+  }
+
+  const address = [street, city, state, zip].filter(Boolean).join(", ") || "(not provided)";
+
+  try {
+    await transporter.sendMail({
+      from: fromEmail,
+      to: BILL_EMAIL,
+      subject: `New customer signup: ${name}`,
+      text: [
+        "New customer form submitted from website",
+        "",
+        "Name: " + name,
+        "Email: " + email,
+        "Phone: " + (phone || "(not provided)"),
+        "Address: " + address,
+        "Company: " + (company || "(not provided)"),
+        "",
+        "Notes: " + (notes || "(none)"),
+        "",
+        "Submitted at: " + new Date().toISOString(),
+      ].join("\n"),
+      html: [
+        "<h2>New customer signup</h2>",
+        "<p><strong>Name:</strong> " + escapeHtml(name) + "</p>",
+        "<p><strong>Email:</strong> " + escapeHtml(email) + "</p>",
+        "<p><strong>Phone:</strong> " + escapeHtml(phone || "—") + "</p>",
+        "<p><strong>Address:</strong> " + escapeHtml(address) + "</p>",
+        "<p><strong>Company:</strong> " + escapeHtml(company || "—") + "</p>",
+        "<p><strong>Notes:</strong> " + escapeHtml(notes || "—") + "</p>",
+        "<p><em>Submitted at: " + new Date().toISOString() + "</em></p>",
+      ].join(""),
+    });
+
+    res.json({ success: true, message: "Thanks! We'll be in touch to get you set up." });
+  } catch (err) {
+    console.error("New customer send mail error:", err);
+    res.status(500).json({
+      success: false,
+      message: "Failed to send. Please try again or contact us at OSWater@ipa.net.",
+    });
+  }
+});
+
 function escapeHtml(s) {
   if (s == null) return "";
   return String(s)

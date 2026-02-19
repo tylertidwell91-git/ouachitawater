@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Customer Form | Ouachita Spring Water</title>
+    <meta
+      name="description"
+      content="Sign up as a new Ouachita Spring Water customer. Submit your contact info and we'll get you set up."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="page-inner">
+        <header class="nav">
+          <a href="index.html" class="brand" aria-label="Ouachita Spring Water – Home">
+            <div class="brand-mark"></div>
+            <div>
+              <div class="brand-text-main">Ouachita Spring Water</div>
+              <div class="brand-text-sub">Natural Spring Water Delivery</div>
+            </div>
+          </a>
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html" class="nav-link">About</a>
+            <a href="new-customer.html" class="nav-link nav-link--primary">New Customer</a>
+            <a href="bill-pay.html" class="nav-link">Pay Your Bill</a>
+          </nav>
+        </header>
+
+        <section class="layout-main layout-vertical" aria-labelledby="new-customer-heading">
+          <article class="card">
+            <div class="card-header-eyebrow">Get started</div>
+            <h1 id="new-customer-heading" class="card-title">New customer form.</h1>
+            <p class="card-subtitle">
+              Submit your contact info below and we’ll reach out to get you set up with delivery.
+            </p>
+            <div class="badge-soft" aria-hidden="true">
+              <span class="badge-dot"></span>
+              <span>Sent to OSWater@ipa.net</span>
+            </div>
+
+            <form id="new-customer-form" class="form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-label" for="name">Name</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="email">Email</label>
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="phone">Phone</label>
+                <input
+                  class="form-input"
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  autocomplete="tel"
+                />
+                <div class="form-help">Optional</div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="company">Company or business name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="company"
+                  name="company"
+                  autocomplete="organization"
+                />
+                <div class="form-help">Optional</div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="street">Street address</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="street"
+                  name="street"
+                  autocomplete="street-address"
+                />
+                <div class="form-help">Optional – we’ll confirm delivery address with you</div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="form-label" for="city">City</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="city"
+                    name="city"
+                    autocomplete="address-level2"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="state">State</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="state"
+                    name="state"
+                    autocomplete="address-level1"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-label" for="zip">ZIP</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="zip"
+                    name="zip"
+                    autocomplete="postal-code"
+                  />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="notes">Notes or questions</label>
+                <textarea
+                  class="form-input form-textarea"
+                  id="notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Delivery needs, cooler preference, etc."
+               ></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" id="submit-btn">
+                Submit
+                <span aria-hidden="true">↗</span>
+              </button>
+
+              <p class="status-note" id="form-status" aria-live="polite"></p>
+            </form>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Ouachita Spring Water Co. All rights reserved.</div>
+        <div>
+          <a href="index.html">About</a>
+          <span aria-hidden="true"> · </span>
+          <a href="bill-pay.html">Pay your bill</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="js/newcustomer.js" defer></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -483,6 +483,12 @@ body::after {
   background-color: #ffffff;
 }
 
+.form-textarea {
+  border-radius: var(--radius-sm);
+  min-height: 4.5rem;
+  resize: vertical;
+}
+
 .form-help {
   font-size: 0.78rem;
   color: var(--text-muted);
