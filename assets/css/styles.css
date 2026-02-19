@@ -118,8 +118,23 @@ body::after {
   margin-bottom: 2.5rem;
 }
 
-.nav-cta-asap {
+.nav-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-self: center;
+  gap: 0.2rem;
+}
+
+.nav-cta-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.nav-cta-asap {
   white-space: nowrap;
 }
 
@@ -166,6 +181,7 @@ body::after {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: clamp(1.15rem, 2.8vw, 1.55rem);
+  white-space: nowrap;
   background: linear-gradient(135deg, var(--deep) 0%, var(--primary) 45%, var(--accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -219,8 +235,7 @@ body::after {
     gap: 0.75rem;
   }
 
-  .nav-cta-asap {
-    justify-self: center;
+  .nav-cta-wrap {
     order: 2;
   }
 
