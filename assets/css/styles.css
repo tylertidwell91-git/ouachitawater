@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700&display=swap");
 
 :root {
   /* Pure water: clear blues and aqua */
@@ -122,6 +122,14 @@ body::after {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand:hover,
+.brand:focus {
+  text-decoration: none;
+  color: inherit;
 }
 
 .brand-mark {
@@ -147,8 +155,9 @@ body::after {
 }
 
 .brand-text-main {
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: "Outfit", "DM Sans", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: clamp(1.15rem, 2.8vw, 1.55rem);
   background: linear-gradient(135deg, var(--deep) 0%, var(--primary) 45%, var(--accent) 100%);
