@@ -111,11 +111,16 @@ body::after {
 }
 
 .nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem 1.5rem;
   margin-bottom: 2.5rem;
+}
+
+.nav-cta-asap {
+  justify-self: center;
+  white-space: nowrap;
 }
 
 .brand {
@@ -124,6 +129,7 @@ body::after {
   gap: 0.75rem;
   text-decoration: none;
   color: inherit;
+  justify-self: start;
 }
 
 .brand:hover,
@@ -174,6 +180,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 1rem;
+  justify-self: end;
 }
 
 .nav-link {
@@ -205,17 +212,24 @@ body::after {
   transform: translateY(-2px);
 }
 
-/* Pay Your Bill more visible on mobile: full-width, larger tap target */
+/* Pay Your Bill more visible on mobile; header stacks with ASAP centered */
 @media (max-width: 640px) {
   .nav {
-    flex-wrap: wrap;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .nav-cta-asap {
+    justify-self: center;
+    order: 2;
   }
 
   .nav-links {
-    flex: 1 1 100%;
     order: 3;
-    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
   }
 
   .nav-link--primary {
@@ -224,6 +238,7 @@ body::after {
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
     font-weight: 600;
+    flex: 1 1 100%;
   }
 }
 
